@@ -10,7 +10,10 @@ import { TaskService } from 'src/app/services/task.service';
 export class TasksComponent implements OnInit {
 
   editForm=false;
+  searchText='';
+  showForm=false;
   tasks : Task[]=[];
+  resultTasks :Task[]=[];
   myTask : Task={
     label: '',
     completed: false
@@ -24,7 +27,9 @@ export class TasksComponent implements OnInit {
   getTasks()
   {
     this.taskService.findAll()
-    .subscribe(tasks =>this.tasks=tasks)
+    .subscribe(tasks =>
+      {this.resultTasks=this.tasks=tasks}
+      )
   }
   deleteTask(id: any)
   {
@@ -39,6 +44,7 @@ export class TasksComponent implements OnInit {
     .subscribe((task)=>{
       this.tasks=[task,...this.tasks];
       this.resetTask();
+      this.showForm=false
     })
   }
   resetTask()
@@ -67,5 +73,9 @@ export class TasksComponent implements OnInit {
       this.resetTask();
       this.editForm=false;
     })
+  }
+  searchTasks()
+  {
+    this.resultTasks=this.tasks.filter((task)=>task.label.toLowerCase().includes(this.searchText.toLowerCase()))
   }
 }

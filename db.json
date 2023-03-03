@@ -2,7 +2,7 @@
   "tasks": [
     {
       "label": "Learn Micro Service",
-      "completed": true,
+      "completed": false,
       "id": 4
     },
     {
@@ -14,6 +14,16 @@
       "label": "Learn JEE",
       "completed": true,
       "id": 5
+    },
+    {
+      "label": "Learn how to learn",
+      "completed": false,
+      "id": 6
+    },
+    {
+      "label": "Learn Angular 8",
+      "completed": true,
+      "id": 7
     }
   ]
 }
